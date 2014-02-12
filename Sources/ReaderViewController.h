@@ -45,5 +45,6 @@
 
 // Customizations
 - (void)setToolbarTintColor:(UIColor *)color;
+- (void)setToolbarLabelColor:(UIColor *)color;
 
 @end

@@ -322,6 +322,13 @@
     }
 }
 
+- (void)setToolbarLabelColor:(UIColor *)color
+{
+    if (mainToolbar != nil){
+        mainToolbar.titleLabel.textColor = color;
+    }
+}
+
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
     if ([keyPath isEqual:@"tintColor"]) {
         if (mainToolbar != nil) {

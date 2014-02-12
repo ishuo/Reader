@@ -44,6 +44,8 @@
 
 @interface ReaderMainToolbar : UIXToolbarView
 
+@property (nonatomic, strong, readonly) UILabel *titleLabel;
+
 @property (nonatomic, weak, readwrite) id <ReaderMainToolbarDelegate> delegate;
 
 - (id)initWithFrame:(CGRect)frame document:(ReaderDocument *)object;

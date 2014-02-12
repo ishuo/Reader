@@ -29,6 +29,12 @@
 
 #import <MessageUI/MessageUI.h>
 
+@interface ReaderMainToolbar ()
+
+@property (nonatomic, strong, readwrite) UILabel *titleLabel;
+
+@end
+
 @implementation ReaderMainToolbar
 {
 	UIButton *markButton;
@@ -266,14 +272,15 @@
 			titleLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
 			titleLabel.baselineAdjustment = UIBaselineAdjustmentAlignCenters;
 			titleLabel.textColor = [UIColor colorWithWhite:0.0f alpha:1.0f];
-			titleLabel.shadowColor = [UIColor colorWithWhite:0.65f alpha:1.0f];
+//			titleLabel.shadowColor = [UIColor colorWithWhite:0.65f alpha:1.0f];
 			titleLabel.backgroundColor = [UIColor clearColor];
-			titleLabel.shadowOffset = CGSizeMake(0.0f, 1.0f);
+//			titleLabel.shadowOffset = CGSizeMake(0.0f, 1.0f);
 			titleLabel.adjustsFontSizeToFitWidth = YES;
 			titleLabel.minimumScaleFactor = 0.75f;
 			titleLabel.text = [object.fileName stringByDeletingPathExtension];
-
-			[self addSubview:titleLabel]; 
+            
+            self.titleLabel = titleLabel;
+			[self addSubview:self.titleLabel]; 
 		}
 	}
 
