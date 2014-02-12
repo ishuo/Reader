@@ -112,7 +112,6 @@
             showControl.tintColor = (useTint ? [UIColor blackColor] : [UIColor colorWithWhite:0.8f alpha:1.0f]);
         }
 		showControl.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
-		showControl.segmentedControlStyle = UISegmentedControlStyleBar;
 		showControl.selectedSegmentIndex = 0; // Default segment index
 		showControl.exclusiveTouch = YES;
 
