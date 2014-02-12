@@ -311,7 +311,7 @@
 	return reader;
 }
 
-- (void)setBarTintColor:(UIColor *)color
+- (void)setToolbarTintColor:(UIColor *)color
 {
     barsTintColor = color;
     if (mainPagebar != nil){

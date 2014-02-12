@@ -42,6 +42,8 @@
 @property (nonatomic, weak, readwrite) id <ReaderViewControllerDelegate> delegate;
 
 - (id)initWithReaderDocument:(ReaderDocument *)object;
-- (void)setBarTintColor:(UIColor *)color;
+
+// Customizations
+- (void)setToolbarTintColor:(UIColor *)color;
 
 @end
