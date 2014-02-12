@@ -44,7 +44,7 @@
 - (id)initWithReaderDocument:(ReaderDocument *)object;
 
 // Customizations
-- (void)setToolbarTintColor:(UIColor *)color;
+- (void)setBarBackgroundColor:(UIColor *)color;
 - (void)setToolbarLabelColor:(UIColor *)color;
 
 @end
