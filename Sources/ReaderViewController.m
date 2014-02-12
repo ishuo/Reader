@@ -523,10 +523,6 @@
 
 - (void)dealloc
 {
-#ifdef DEBUG
-	NSLog(@"%s", __FUNCTION__);
-#endif
-    
 	mainToolbar = nil; mainPagebar = nil;
     
 	theScrollView = nil; contentViews = nil; lastHideTime = nil;
