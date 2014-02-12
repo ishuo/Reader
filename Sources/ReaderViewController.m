@@ -47,6 +47,8 @@
 	ReaderMainToolbar *mainToolbar;
 
 	ReaderMainPagebar *mainPagebar;
+    
+    UIColor *barsTintColor;
 
 	NSMutableDictionary *contentViews;
 
@@ -309,13 +311,44 @@
 	return reader;
 }
 
+- (void)setBarTintColor:(UIColor *)color
+{
+    barsTintColor = color;
+    if (mainPagebar != nil){
+        mainPagebar.backgroundColor = color;
+    }
+    if (mainToolbar != nil){
+        mainToolbar.backgroundColor = color;
+    }
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+    if ([keyPath isEqual:@"tintColor"]) {
+        if (mainToolbar != nil) {
+            mainToolbar.tintColor = self.view.tintColor;
+        }
+        if (mainPagebar != nil) {
+            mainPagebar.tintColor = self.view.tintColor;
+        }
+    } else {
+        [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
+    }
+}
+
 - (void)viewDidLoad
 {
 	[super viewDidLoad];
-
+    
+    [self.view addObserver:self forKeyPath:@"tintColor" options:NSKeyValueObservingOptionOld context:NULL];
+    
 	assert(document != nil); // Must have a valid ReaderDocument
 
-	self.view.backgroundColor = [UIColor grayColor]; // Neutral gray
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0f) {
+        self.view.backgroundColor = [UIColor whiteColor];
+    }
+    else {
+        self.view.backgroundColor = [UIColor grayColor]; // Neutral gray
+    }
 
 	CGRect scrollViewRect = self.view.bounds; UIView *fakeStatusBar = nil;
 
@@ -356,6 +389,11 @@
 	mainPagebar.delegate = self; // ReaderMainPagebarDelegate
 	[self.view addSubview:mainPagebar];
 
+    if (barsTintColor != nil) {
+        mainToolbar.backgroundColor = barsTintColor;
+        mainPagebar.backgroundColor = barsTintColor;
+    }
+    
 	if (fakeStatusBar != nil) [self.view addSubview:fakeStatusBar]; // Add status bar background view
 
 	UITapGestureRecognizer *singleTapOne = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
@@ -435,6 +473,8 @@
 	theScrollView = nil; contentViews = nil; lastHideTime = nil;
 
 	lastAppearSize = CGSizeZero; currentPage = 0; currentScrollViewPage = 0;
+    
+    [self.view removeObserver:self forKeyPath:@"tintColor"];
 
 	[super viewDidUnload];
 }
@@ -787,6 +827,9 @@
 
 	ThumbsViewController *thumbsViewController = [[ThumbsViewController alloc] initWithReaderDocument:document];
 
+    [thumbsViewController setBarTintColor:barsTintColor];
+    [thumbsViewController setTintColor:self.view.tintColor];
+    
 	thumbsViewController.delegate = self; thumbsViewController.title = self.title;
 
 	thumbsViewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
