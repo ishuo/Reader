@@ -36,6 +36,9 @@
 
 @interface ReaderViewController () <UIScrollViewDelegate, UIGestureRecognizerDelegate, MFMailComposeViewControllerDelegate,
 									ReaderMainToolbarDelegate, ReaderMainPagebarDelegate, ReaderContentViewDelegate, ThumbsViewControllerDelegate>
+
+@property (nonatomic, strong) UIColor *PDFViewBackgroundColor;
+
 @end
 
 @implementation ReaderViewController
@@ -184,7 +187,11 @@
 				NSURL *fileURL = document.fileURL; NSString *phrase = document.password; // Document properties
 
 				contentView = [[ReaderContentView alloc] initWithFrame:viewRect fileURL:fileURL page:number password:phrase];
-
+                if (self.PDFViewBackgroundColor)
+                {
+                    contentView.backgroundColor = self.PDFViewBackgroundColor;
+                }
+                
 				[theScrollView addSubview:contentView]; [contentViews setObject:contentView forKey:key];
 
 				contentView.message = self; [newPageSet addIndex:number];
@@ -327,6 +334,11 @@
     if (mainToolbar != nil){
         mainToolbar.titleLabel.textColor = color;
     }
+}
+
+- (void)setPDFViewBackgroundColor:(UIColor *)color
+{
+    _PDFViewBackgroundColor = color;
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
