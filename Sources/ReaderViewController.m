@@ -841,6 +841,8 @@
     [thumbsViewController setTintColor:self.view.tintColor];
     
 	thumbsViewController.delegate = self; thumbsViewController.title = self.title;
+    
+    thumbsViewController.view.backgroundColor = self.PDFViewBackgroundColor;
 
 	thumbsViewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
 	thumbsViewController.modalPresentationStyle = UIModalPresentationFullScreen;
