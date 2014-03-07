@@ -48,6 +48,7 @@
 - (id)initWithReaderDocument:(ReaderDocument *)object;
 - (void)setBarTintColor:(UIColor *)color;
 - (void)setTintColor:(UIColor *)color;
+- (void)setTitleColor:(UIColor *)color;
 
 @end
 

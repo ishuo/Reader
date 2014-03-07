@@ -45,7 +45,7 @@
 
 // Customizations
 - (void)setBarBackgroundColor:(UIColor *)color;
-- (void)setToolbarLabelColor:(UIColor *)color;
+- (void)setToolbarTitleColor:(UIColor *)color;
 - (void)setPDFViewBackgroundColor:(UIColor *)color;
 
 @end

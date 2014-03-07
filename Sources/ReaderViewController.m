@@ -38,6 +38,7 @@
 									ReaderMainToolbarDelegate, ReaderMainPagebarDelegate, ReaderContentViewDelegate, ThumbsViewControllerDelegate>
 
 @property (nonatomic, strong) UIColor *PDFViewBackgroundColor;
+@property (nonatomic, strong) UIColor *toolbarTitleColor;
 
 @end
 
@@ -329,8 +330,10 @@
     }
 }
 
-- (void)setToolbarLabelColor:(UIColor *)color
+- (void)setToolbarTitleColor:(UIColor *)color
 {
+    _toolbarTitleColor = color;
+    
     if (mainToolbar != nil){
         mainToolbar.titleLabel.textColor = color;
     }
@@ -839,6 +842,7 @@
 
     [thumbsViewController setBarTintColor:barsTintColor];
     [thumbsViewController setTintColor:self.view.tintColor];
+    [thumbsViewController setTitleColor:self.toolbarTitleColor];
     
 	thumbsViewController.delegate = self; thumbsViewController.title = self.title;
     

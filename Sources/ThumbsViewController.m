@@ -33,6 +33,8 @@
 
 @interface ThumbsViewController () <ThumbsMainToolbarDelegate, ReaderThumbsViewDelegate>
 
+@property (nonatomic, strong) UIColor *titleColor;
+
 @end
 
 @implementation ThumbsViewController
@@ -98,6 +100,11 @@
     tintColor = color;
 }
 
+- (void)setTitleColor:(UIColor *)color
+{
+    _titleColor = color;
+}
+
 - (void)viewDidLoad
 {
 	[super viewDidLoad];
@@ -134,7 +141,7 @@
 
 	CGRect toolbarRect = scrollViewRect; // Toolbar frame
 	toolbarRect.size.height = TOOLBAR_HEIGHT; // Default toolbar height
-	mainToolbar = [[ThumbsMainToolbar alloc] initWithFrame:toolbarRect title:toolbarTitle tintColor:tintColor]; // ThumbsMainToolbar
+	mainToolbar = [[ThumbsMainToolbar alloc] initWithFrame:toolbarRect title:toolbarTitle titleColor:self.titleColor tintColor:tintColor]; // ThumbsMainToolbar
     if (barsTintColor != nil) {
         mainToolbar.backgroundColor = barsTintColor;
     }

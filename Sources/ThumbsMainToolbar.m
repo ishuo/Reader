@@ -51,10 +51,10 @@
 
 - (id)initWithFrame:(CGRect)frame
 {
-	return [self initWithFrame:frame title:nil tintColor:nil];
+	return [self initWithFrame:frame title:nil titleColor:nil tintColor:nil];
 }
 
-- (id)initWithFrame:(CGRect)frame title:(NSString *)title tintColor:(UIColor*)tintColor
+- (id)initWithFrame:(CGRect)frame title:(NSString *)title titleColor:(UIColor *)titleColor tintColor:(UIColor *)tintColor
 {
 	if ((self = [super initWithFrame:frame]))
 	{
@@ -133,8 +133,7 @@
 			titleLabel.font = [UIFont systemFontOfSize:19.0f];
 			titleLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
 			titleLabel.baselineAdjustment = UIBaselineAdjustmentAlignCenters;
-			titleLabel.textColor = [UIColor colorWithWhite:0.0f alpha:1.0f];
-			titleLabel.shadowColor = [UIColor colorWithWhite:0.65f alpha:1.0f];
+			titleLabel.textColor = titleColor ? titleColor : [UIColor colorWithWhite:0.0f alpha:1.0f];
 			titleLabel.backgroundColor = [UIColor clearColor];
 			titleLabel.shadowOffset = CGSizeMake(0.0f, 1.0f);
 			titleLabel.adjustsFontSizeToFitWidth = YES;
