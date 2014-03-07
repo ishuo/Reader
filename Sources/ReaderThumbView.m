@@ -24,6 +24,7 @@
 //
 
 #import "ReaderThumbView.h"
+#import "ReaderConstants.h"
 
 @implementation ReaderThumbView
 {
@@ -55,6 +56,13 @@
 		imageView.userInteractionEnabled = NO;
 		imageView.autoresizingMask = UIViewAutoresizingNone;
 		imageView.contentMode = UIViewContentModeScaleAspectFit;
+        
+#if (READER_SHOW_BORDERS == TRUE) // Option
+
+        imageView.layer.borderWidth = 1.0f / [UIScreen mainScreen].scale;
+        imageView.layer.borderColor = [[UIColor blackColor] CGColor];
+
+#endif // end of READER_SHOW_BORDERS Option
 
 		[self addSubview:imageView];
 	}
