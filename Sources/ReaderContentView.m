@@ -51,7 +51,7 @@
 #if (READER_SHOW_SHADOWS == TRUE) // Option
 	#define CONTENT_INSET 4.0f
 #else
-	#define CONTENT_INSET 2.0f
+	#define CONTENT_INSET 0.0f
 #endif // end of READER_SHOW_SHADOWS Option
 
 #define PAGE_THUMB_LARGE 240
@@ -122,6 +122,13 @@ static inline CGFloat ZoomScaleThatFits(CGSize target, CGSize source)
 			theContainerView.layer.shadowPath = [UIBezierPath bezierPathWithRect:theContainerView.bounds].CGPath;
 
 #endif // end of READER_SHOW_SHADOWS Option
+            
+#if (READER_SHOW_BORDERS == TRUE) // Option
+            
+            theContainerView.layer.borderColor = [[UIColor blackColor] CGColor];
+            theContainerView.layer.borderWidth = 1.0 / [UIScreen mainScreen].scale;
+            
+#endif // end of READER_SHOW_BORDERS Option
 
 			self.contentSize = theContentView.bounds.size; // Content size same as view size
 			self.contentOffset = CGPointMake((0.0f - CONTENT_INSET), (0.0f - CONTENT_INSET)); // Offset
