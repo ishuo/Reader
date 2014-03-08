@@ -60,7 +60,7 @@
 #if (READER_SHOW_BORDERS == TRUE) // Option
 
         imageView.layer.borderWidth = 1.0f / [UIScreen mainScreen].scale;
-        imageView.layer.borderColor = [[UIColor blackColor] CGColor];
+        imageView.layer.borderColor = [[UIColor grayColor] CGColor];
 
 #endif // end of READER_SHOW_BORDERS Option
 
